@@ -1,3 +1,15 @@
+/* Self-hosted fonts (SIL OFL 1.1, licences in fonts/). Nothing loads from third parties. */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("../fonts/SpaceGrotesk-Variable.woff2") format("woff2");
+  font-weight: 300 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../fonts/JetBrainsMono-Variable.woff2") format("woff2");
+  font-weight: 100 800; font-style: normal; font-display: swap;
+}
+
 /* Design tokens. Brand colours are fixed; surface colours switch with the theme. */
 :root {
   --green: #1c3a2f; --lime: #c8f56a; --paper: #f3f4f1; --ink: #14231d; --black: #141917;
