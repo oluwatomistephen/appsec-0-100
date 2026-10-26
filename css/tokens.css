@@ -1,0 +1,19 @@
+/* Design tokens. Brand colours are fixed; surface colours switch with the theme. */
+:root {
+  --green: #1c3a2f; --lime: #c8f56a; --paper: #f3f4f1; --ink: #14231d; --black: #141917;
+  --bg: #f3f4f1; --surface: #ffffff; --text: #14231d; --muted: #5d6b64; --line: #dde2dc;
+  --chip: #e8ece6; --accent-ink: #1c3a2f; --focus: #1c3a2f;
+  --sans: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101614; --surface: #18211d; --text: #e8eee9; --muted: #9aa8a0; --line: #28332e;
+    --chip: #222d28; --accent-ink: #c8f56a; --focus: #c8f56a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101614; --surface: #18211d; --text: #e8eee9; --muted: #9aa8a0; --line: #28332e;
+  --chip: #222d28; --accent-ink: #c8f56a; --focus: #c8f56a; color-scheme: dark;
+}

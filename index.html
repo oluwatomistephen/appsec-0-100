@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; require-trusted-types-for 'script'; trusted-types 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A free, multi-pathway plan for becoming an Application Security engineer. Pick your starting point, tick off deliverables and track your progress in your own browser.">
+<meta name="color-scheme" content="light dark">
+<title>AppSec 0→100</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/cards.css">
+<script src="js/theme-init.js"></script>
+<script type="module" src="js/main.js"></script>
+</head>
+<body>
+<button class="skip" type="button" id="skip">Skip to content</button>
+<header class="top">
+  <div class="top-inner">
+    <div class="brand-row">
+      <a class="brand" href="#"><i aria-hidden="true"></i>AppSec 0→100</a>
+      <div class="top-right">
+        <span class="counter" id="overall" hidden></span>
+        <button class="theme-btn" type="button" id="theme-toggle">Theme: auto</button>
+      </div>
+    </div>
+    <div class="bar" id="overall-bar" aria-hidden="true" hidden><span></span></div>
+    <nav class="tabs" id="tabs" aria-label="Pathway sections" hidden></nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+  <noscript><p class="noscript">This site needs JavaScript to show the plans and save your progress. Nothing is sent anywhere: it all runs in your browser.</p></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="foot-inner">
+    <p>No accounts, no analytics, no trackers. Your progress stays in this browser unless you export it.</p>
+    <p>Free to use. Every resource named in the plans is free or has a free tier.</p>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
