@@ -51,7 +51,8 @@ function updateHeader() {
   const done = ctx.getDone(bp.def.id);
   const n = bp.countedIds.filter((id) => done.has(id)).length;
   const current = bp.weeks.find((w) => !w.week.optional && w.ids.some((id) => !done.has(id)));
-  overall.textContent = `${n} / ${bp.countedIds.length} done${current ? ` · Week ${current.n}` : ""}`;
+  mount(overall, `${n} / ${bp.countedIds.length}`, h("span", { class: "wide" }, " done"),
+    current ? [" · ", h("span", { class: "wide" }, "Week "), h("span", { class: "narrow" }, "W"), String(current.n)] : "");
   overallBar.firstElementChild.style.width = `${(n / bp.countedIds.length) * 100}%`;
 }
 
@@ -91,7 +92,7 @@ const THEMES = ["auto", "light", "dark"];
 function applyTheme(theme) {
   if (theme === "auto") document.documentElement.removeAttribute("data-theme");
   else document.documentElement.setAttribute("data-theme", theme);
-  themeBtn.textContent = `Theme: ${theme}`;
+  themeBtn.textContent = `◐ ${theme[0].toUpperCase()}${theme.slice(1)}`;
   themeBtn.setAttribute("aria-label", `Colour theme: ${theme}. Change theme`);
 }
 let theme = loadTheme();

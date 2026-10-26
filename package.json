@@ -1,0 +1,10 @@
+{
+  "name": "appsec-0-100",
+  "private": true,
+  "description": "Static site. No dependencies and no build step: package.json only names the dev commands.",
+  "type": "module",
+  "scripts": {
+    "serve": "node scripts/serve.mjs 8080",
+    "test": "node --test \"tests/*.test.js\""
+  }
+}
