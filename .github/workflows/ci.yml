@@ -53,18 +53,22 @@ jobs:
   gitleaks:
     name: gitleaks
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: read # to list a pull request's commits
+    env:
+      GITLEAKS_VERSION: 8.30.1
+      # From the release's gitleaks_<version>_checksums.txt. Update both together.
+      GITLEAKS_SHA256: 551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
-      - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITLEAKS_ENABLE_COMMENTS: false
+      - name: Install gitleaks (pinned version, checksum verified)
+        run: |
+          curl -fsSL -o gitleaks.tar.gz "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          echo "${GITLEAKS_SHA256}  gitleaks.tar.gz" | sha256sum --check
+          tar -xzf gitleaks.tar.gz gitleaks
+      - name: Scan the full Git history
+        run: ./gitleaks git --redact --verbose --exit-code 1 .
 
   html:
     name: HTML and links

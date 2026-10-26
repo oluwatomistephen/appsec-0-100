@@ -147,7 +147,7 @@ This is a learning site for AppSec engineers, so it should practise what it teac
 
 **Semgrep in CI, with project rules.** `.semgrep/` holds rules that ban HTML string sinks, string evaluation, inline style and handler attributes, and inline or third-party resources in HTML. CI first runs `semgrep --test` against fixtures in `tests/semgrep/`, proving each rule catches what it should and ignores safe code, then scans the project with these rules and Semgrep's JavaScript ruleset.
 
-**Secrets scanning.** gitleaks scans the full Git history on every pull request and push.
+**Secrets scanning.** gitleaks scans the full Git history on every pull request and push. CI downloads a pinned gitleaks release and checks it against the SHA-256 published with that release before running it.
 
 **HTML and link checks.** html-validate checks the page's markup, and lychee checks every link in the HTML and docs, including in-page anchors.
 
