@@ -12,6 +12,7 @@ No accounts, no backend, no analytics, nothing loaded from third parties.
 - [Editing content](#editing-content)
 - [How this site is secured](#how-this-site-is-secured)
 - [Credits](#credits)
+- [Licence](#licence)
 
 ## Pathways
 
@@ -168,3 +169,11 @@ See [SECURITY.md](SECURITY.md) to report a vulnerability.
 
 - [Space Grotesk](https://github.com/floriankarsten/space-grotesk) and [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono), both under the SIL Open Font License 1.1. Licences are in `fonts/`.
 - The plans point to free resources including [PortSwigger Web Security Academy](https://portswigger.net/web-security), [OWASP Juice Shop](https://owasp.org/www-project-juice-shop/) and [OWASP crAPI](https://owasp.org/www-project-crapi/).
+
+## Licence
+
+- **Code** (everything outside `data/` and `fonts/`) is under the [MIT License](LICENSE).
+- **Curriculum content** in `data/` (the pathways, weeks, projects, learning card decks and walkthroughs) is under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You can share and adapt it, including commercially, as long as you credit “AppSec 0→100” and link to this repository.
+- **Fonts** in `fonts/` keep their own SIL Open Font License 1.1.
+
+The tools, labs and courses the plans name belong to their owners and have their own terms.
