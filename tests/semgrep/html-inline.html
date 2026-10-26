@@ -1,0 +1,21 @@
+<!-- Fixture for `semgrep --test`: lines marked ruleid must match, ok must not. -->
+<!-- ok: no-inline-script -->
+<script src="js/main.js"></script>
+<!-- ruleid: no-inline-script -->
+<script>alert(1)</script>
+<!-- ruleid: no-inline-style -->
+<style>body { color: red }</style>
+<!-- ruleid: no-inline-style -->
+<p style="color: red">x</p>
+<!-- ok: no-inline-style -->
+<link rel="stylesheet" href="css/app.css">
+<!-- ruleid: no-inline-event-handler -->
+<button onclick="go()">x</button>
+<!-- ok: no-inline-event-handler -->
+<button type="button" id="go">x</button>
+<!-- ruleid: no-third-party-resource -->
+<script src="https://cdn.example.com/lib.js"></script>
+<!-- ruleid: no-third-party-resource -->
+<link rel="stylesheet" href="//fonts.example.com/css">
+<!-- ok: no-third-party-resource -->
+<a href="https://owasp.org">OWASP</a>

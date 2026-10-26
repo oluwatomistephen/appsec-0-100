@@ -1,0 +1,52 @@
+# Project rules: the site must never turn strings into HTML or code.
+# The CSP and Trusted Types enforce this in the browser; these rules catch it
+# in code review, before it ships. Tested against tests/semgrep/dom-safety.js.
+
+rules:
+  - id: no-html-string-sinks
+    languages: [javascript]
+    severity: ERROR
+    message: >-
+      Don't build DOM from strings. Use h() / textContent from js/dom.js
+      so data can never become markup.
+    pattern-either:
+      - pattern: $EL.innerHTML = $X
+      - pattern: $EL.outerHTML = $X
+      - pattern: $EL.innerHTML += $X
+      - pattern: $EL.insertAdjacentHTML(...)
+      - pattern: $EL.setHTMLUnsafe(...)
+      - pattern: document.write(...)
+      - pattern: document.writeln(...)
+      - pattern: $RANGE.createContextualFragment(...)
+      - pattern: new DOMParser().parseFromString(...)
+
+  - id: no-string-evaluation
+    languages: [javascript]
+    severity: ERROR
+    message: Don't evaluate strings as code. The CSP blocks it (no unsafe-eval).
+    pattern-either:
+      - pattern: eval(...)
+      - pattern: new Function(...)
+      - pattern: Function(...)
+      - pattern: setTimeout("...", ...)
+      - pattern: setInterval("...", ...)
+
+  - id: no-inline-style-attribute
+    languages: [javascript]
+    severity: ERROR
+    message: >-
+      Inline style attributes are blocked by the CSP (no unsafe-inline).
+      Use a CSS class, or el.style.<property> for computed values.
+    pattern-either:
+      - pattern: $EL.setAttribute("style", ...)
+      - pattern: $EL.style.cssText = $X
+
+  - id: no-inline-event-handler-attribute
+    languages: [javascript]
+    severity: ERROR
+    message: Inline event handlers are blocked by the CSP. Use addEventListener.
+    patterns:
+      - pattern: $EL.setAttribute($NAME, ...)
+      - metavariable-regex:
+          metavariable: $NAME
+          regex: ^["']on[a-z]+["']$

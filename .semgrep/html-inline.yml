@@ -1,0 +1,35 @@
+# Project rules for HTML files: no inline scripts, styles or event handlers,
+# which the CSP would block anyway. Tested against tests/semgrep/html-inline.html.
+
+rules:
+  - id: no-inline-script
+    languages: [regex]
+    severity: ERROR
+    message: Inline <script> blocks are blocked by the CSP. Move the code to a file in js/.
+    paths:
+      include: ["*.html"]
+    pattern-regex: <script(?![^>]*\bsrc\s*=)[^>]*>
+
+  - id: no-inline-style
+    languages: [regex]
+    severity: ERROR
+    message: Inline styles are blocked by the CSP. Move them to a file in css/.
+    paths:
+      include: ["*.html"]
+    pattern-regex: (<style[\s>]|\sstyle\s*=)
+
+  - id: no-inline-event-handler
+    languages: [regex]
+    severity: ERROR
+    message: Inline event handlers are blocked by the CSP. Use addEventListener in js/.
+    paths:
+      include: ["*.html"]
+    pattern-regex: \son[a-z]+\s*=\s*["']
+
+  - id: no-third-party-resource
+    languages: [regex]
+    severity: ERROR
+    message: The site loads nothing from third parties. Self-host the file instead.
+    paths:
+      include: ["*.html"]
+    pattern-regex: <(script|link|img|iframe)\b[^>]*\b(src|href)\s*=\s*["'](https?:)?//
