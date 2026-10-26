@@ -7,6 +7,7 @@ export const devWebSecurity = {
   id: "dev-web-security",
   title: "Web security for builders",
   deck: "web-basics",
+  walkthroughs: ["ai-tutor", "github-repo", "devtools-network"],
   learn: [
     "HTTP from the attacker's side: everything in a request is user-controlled",
     "Same-origin policy, CORS and cookie flags (Secure, HttpOnly, SameSite)",

@@ -12,6 +12,7 @@ export const httpBasics = {
   id: "http-basics",
   title: "How the web works",
   deck: "web-basics",
+  walkthroughs: ["ai-tutor", "github-repo", "devtools-network"],
   learn: ["HTTP methods, status codes and headers", "The request and response cycle", "Cookies basics", "Browser DevTools Network tab", "Burp Suite Community setup"],
   deliverables: [
     "Create a GitHub repo called appsec-journey with a README stating your goal",
@@ -29,6 +30,7 @@ export const httpBasics = {
 export const pythonSecurity = {
   id: "python-security",
   title: "Python for security work",
+  walkthroughs: ["python-venv"],
   learn: ["Functions, loops, lists and dicts", "Reading files and JSON", "The requests library", "Virtual environments and pip"],
   deliverables: [
     "Script that reads urls.txt and flags missing CSP, HSTS, X-Content-Type-Options and X-Frame-Options",

@@ -1,11 +1,11 @@
 // Hash routes: #<pathway>/<view>[/<item>]. Every segment is checked against
 // an allow-list; anything unexpected falls back to the landing page.
 
-export const VIEWS = ["plan", "cards"];
+export const VIEWS = ["plan", "cards", "toolkit"];
 
 /**
  * @param {string} hash  location.hash
- * @param {{pathways: Set<string>, decks: Set<string>}} known
+ * @param {{pathways: Set<string>, decks: Set<string>, walkthroughs: Set<string>}} known
  * @returns {{name: "landing"} | {name: "pathway", pathway: string, view: string, item: string|null}}
  */
 export function parseRoute(hash, known) {
@@ -13,7 +13,8 @@ export function parseRoute(hash, known) {
   if (parts.length === 0 || parts.length > 3) return { name: "landing" };
   const [pathway, view = "plan", item = null] = parts;
   if (!known.pathways.has(pathway) || !VIEWS.includes(view)) return { name: "landing" };
-  if (item !== null && !(view === "cards" && known.decks.has(item))) return { name: "pathway", pathway, view, item: null };
+  const items = view === "cards" ? known.decks : view === "toolkit" ? known.walkthroughs : null;
+  if (item !== null && !(items && items.has(item))) return { name: "pathway", pathway, view, item: null };
   return { name: "pathway", pathway, view, item };
 }
 

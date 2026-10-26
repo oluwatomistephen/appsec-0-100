@@ -8,6 +8,7 @@ export const socAudit1 = {
   id: "soc-audit-1",
   title: "Practitioner audit I: server-side",
   deck: "web-basics",
+  walkthroughs: ["ai-tutor", "github-repo"],
   learn: [
     "A gap check against PortSwigger's server-side topics",
     "SQL injection, authentication, path traversal, command injection and SSRF",
@@ -64,6 +65,7 @@ export const socAudit3 = {
 export const socPython = {
   id: "soc-python",
   title: "Python beyond scripts",
+  walkthroughs: ["python-venv"],
   learn: ["Packages, modules and project layout", "Classes and type hints", "Testing with pytest", "Flask: routes, templates and request handling"],
   deliverables: [
     "Refactor one of your old security scripts into a package with tests",

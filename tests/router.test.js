@@ -2,7 +2,13 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { parseRoute, href } from "../js/router.js";
 
-const known = { pathways: new Set(["beginner", "it-support"]), decks: new Set(["web-basics"]) };
+const known = { pathways: new Set(["beginner", "it-support"]), decks: new Set(["web-basics"]), walkthroughs: new Set(["burp-intercept"]) };
+
+test("parses toolkit routes", () => {
+  assert.deepEqual(parseRoute("#beginner/toolkit/burp-intercept", known), { name: "pathway", pathway: "beginner", view: "toolkit", item: "burp-intercept" });
+  assert.equal(parseRoute("#beginner/toolkit/web-basics", known).item, null);
+  assert.equal(parseRoute("#beginner/cards/burp-intercept", known).item, null);
+});
 
 test("parses the brief's example URLs", () => {
   assert.deepEqual(parseRoute("#it-support/plan", known), { name: "pathway", pathway: "it-support", view: "plan", item: null });

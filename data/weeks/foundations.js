@@ -7,6 +7,7 @@ import { P0 } from "../projects.js";
 export const toolkit = {
   id: "toolkit",
   title: "Your toolkit: computers, VS Code and an AI tutor",
+  walkthroughs: ["vscode-terminal", "ai-tutor"],
   learn: [
     "What the CPU, memory, storage and operating system each do",
     "Files, folders, paths and file extensions",
@@ -100,6 +101,7 @@ export const networking = {
 export const httpWeb = {
   id: "http-web",
   title: "HTTP and how websites work",
+  walkthroughs: ["devtools-network"],
   learn: [
     "Clients, servers and URLs",
     "HTTP requests and responses",
@@ -146,6 +148,7 @@ export const python1 = {
 export const python2 = {
   id: "python-2",
   title: "Python basics II",
+  walkthroughs: ["python-venv"],
   learn: [
     "Functions and modules",
     "Reading and writing files, and JSON",
@@ -169,6 +172,7 @@ export const python2 = {
 export const gitGithub = {
   id: "git-github",
   title: "Git and GitHub",
+  walkthroughs: ["github-repo"],
   learn: [
     "Repositories, commits and history",
     "Branches and merging",

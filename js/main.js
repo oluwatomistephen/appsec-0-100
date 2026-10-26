@@ -1,5 +1,6 @@
 import { pathways } from "../data/pathways/index.js";
 import { decks } from "../data/decks/index.js";
+import { walkthroughs } from "../data/walkthroughs/index.js";
 import { h, mount } from "./dom.js";
 import { buildPathway } from "./catalog.js";
 import { parseRoute, href } from "./router.js";
@@ -7,11 +8,13 @@ import { loadProgress, saveProgress, storageAvailable, loadTheme, saveTheme } fr
 import { renderLanding } from "./views/landing.js";
 import { renderPlan } from "./views/plan.js";
 import { renderCards } from "./views/cards.js";
+import { renderToolkit } from "./views/toolkit.js";
 
 const built = pathways.map(buildPathway);
 const byId = new Map(built.map((bp) => [bp.def.id, bp]));
 const deckMap = new Map(decks.map((d) => [d.id, d]));
-const known = { pathways: new Set(byId.keys()), decks: new Set(deckMap.keys()) };
+const walkMap = new Map(walkthroughs.map((w) => [w.id, w]));
+const known = { pathways: new Set(byId.keys()), decks: new Set(deckMap.keys()), walkthroughs: new Set(walkMap.keys()) };
 
 const progress = new Map();
 const main = document.getElementById("main");
@@ -25,6 +28,7 @@ let toastTimer = null;
 const ctx = {
   pathways: built,
   deckMap,
+  walkMap,
   storageOk: storageAvailable(),
   getDone(id) {
     if (!progress.has(id)) progress.set(id, loadProgress(id));
@@ -59,7 +63,7 @@ function updateHeader() {
 function renderTabs(bp) {
   const counted = bp.weeks.filter((w) => !w.week.optional).length;
   const tab = (view, label) => h("a", { class: "tab", href: href(bp.def.id, view), "aria-current": route.view === view ? "page" : null }, label);
-  mount(tabs, tab("plan", `${counted}-week plan`), tab("cards", "Learning cards"));
+  mount(tabs, tab("plan", `${counted}-week plan`), tab("cards", "Learning cards"), tab("toolkit", "Toolkit"));
 }
 
 function render(moveFocus) {
@@ -73,6 +77,10 @@ function render(moveFocus) {
     if (route.view === "cards") {
       document.title = `Learning cards · ${bp.def.name} · AppSec 0→100`;
       mount(main, renderCards(ctx, bp, route.item));
+    } else if (route.view === "toolkit") {
+      const walk = route.item && walkMap.get(route.item);
+      document.title = `${walk ? walk.title : "Toolkit"} · ${bp.def.name} · AppSec 0→100`;
+      mount(main, renderToolkit(ctx, bp, route.item));
     } else {
       document.title = `${bp.def.name} plan · AppSec 0→100`;
       mount(main, renderPlan(ctx, bp));

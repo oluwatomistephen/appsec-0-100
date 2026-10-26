@@ -68,6 +68,11 @@ export function renderPlan(ctx, bp) {
               h("p", null, week.project.desc),
               week.project.items.map((t, i) => check(`${week.id}.p${i}`, t)))
           : null,
+        week.walkthroughs
+          ? [h("div", { class: "block-label" }, "Walkthroughs"),
+             h("div", { class: "walk-links" }, week.walkthroughs.filter((id) => ctx.walkMap.has(id)).map((id) =>
+               h("a", { class: "btn", href: href(def.id, "toolkit", id) }, `${ctx.walkMap.get(id).title} →`)))]
+          : null,
         week.deck && ctx.deckMap.has(week.deck)
           ? h("a", { class: "btn cards-link", href: href(def.id, "cards", week.deck) }, `Open week ${n} learning cards`)
           : null));
