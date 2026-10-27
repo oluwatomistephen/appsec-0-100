@@ -30,6 +30,7 @@ export const httpBasics = {
 export const pythonSecurity = {
   id: "python-security",
   title: "Python for security work",
+  deck: "python-security",
   walkthroughs: ["python-venv"],
   learn: ["Functions, loops, lists and dicts", "Reading files and JSON", "The requests library", "Virtual environments and pip"],
   deliverables: [
@@ -47,6 +48,7 @@ export const pythonSecurity = {
 export const sessionsTokens = {
   id: "sessions-tokens",
   title: "Sessions, passwords and tokens",
+  deck: "sessions-tokens",
   quiz: true,
   learn: ["Sessions vs tokens", "Password hashing (bcrypt, Argon2) vs encryption", "JWT structure and common mistakes", "MFA and session fixation"],
   deliverables: [

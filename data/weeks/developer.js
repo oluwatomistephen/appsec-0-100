@@ -31,6 +31,7 @@ export const devWebSecurity = {
 export const devAuth = {
   id: "dev-auth",
   title: "Sessions, OAuth 2.0 and OpenID Connect",
+  deck: "sessions-tokens",
   learn: [
     "Session cookies vs JWTs, and when each fits",
     "Password storage with Argon2id or bcrypt",

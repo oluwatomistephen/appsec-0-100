@@ -33,7 +33,7 @@ const BLOCKS = {
           col.tags.map((t) => (typeof t === "string" ? h("span", { class: "c-tag" }, t) : h("span", { class: "c-tag on" }, t.text)))))),
 
   list: (b, vars) =>
-    h("div", { class: "c-list" },
+    h("div", { class: b.wide ? "c-list wide" : "c-list" },
       b.items.map(([code, text]) => h("div", { class: "c-li" }, h("code", null, code), h("span", null, rich(text, vars))))),
 
   callout: (b, vars) =>

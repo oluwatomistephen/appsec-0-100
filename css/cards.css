@@ -63,11 +63,13 @@
 .c-neq { display: inline-block; background: #c8f56a; border-radius: 2cqw; padding: 0 1.6cqw; color: #14231d; }
 .c-list { display: grid; gap: 2.4cqw; margin-top: 2cqw; }
 .c-li { display: grid; grid-template-columns: 12cqw 1fr; gap: 3cqw; font-size: 3.8cqw; line-height: 1.3; }
+.c-list.wide .c-li { grid-template-columns: 24cqw 1fr; }
+.c-list.wide .c-li code { font-size: 3.6cqw; }
 .c-li code { font-family: var(--mono); color: #c8f56a; font-size: 4.2cqw; font-weight: 600; background: none; padding: 0; }
 .c-callout { margin-top: auto; background: #c8f56a; color: #14231d; border-radius: 3.6cqw; padding: 4.4cqw 5cqw; display: grid; grid-template-columns: auto 1fr; gap: 3.4cqw; }
 .c-callout svg { width: 5.6cqw; height: 5.6cqw; margin-top: .6cqw; }
 .c-callout strong { display: block; font-size: 4.4cqw; margin-bottom: 1cqw; }
-.c-callout span { font-size: 3.6cqw; line-height: 1.35; }
+.c-callout span { display: block; font-size: 3.6cqw; line-height: 1.35; }
 .c-box { background: #fff; border: 1px solid #dde2dc; border-radius: 3.2cqw; padding: 3.6cqw 4.4cqw; display: grid; grid-template-columns: 34% auto 1fr; gap: 3cqw; align-items: center; margin-bottom: 2.6cqw; font-size: 3.7cqw; line-height: 1.3; }
 .c-box b { font-size: 4.1cqw; }
 .c-box .arr { color: #1c3a2f; font-size: 4.6cqw; }

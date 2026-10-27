@@ -110,7 +110,7 @@ Each card has a `theme` (`green`, `paper` or `black`), an optional `eyebrow`, a 
 | `code` | `label`, `lines` (each line is a list of strings, `{ k }` for highlighted or `{ m }` for muted) |
 | `table` | `label`, `rows`, optional `two` for two columns; a row can be `{ muted: true, cells }` |
 | `cols` | `cols: [{ title, tags }]`; a tag can be `{ text, on: true }` |
-| `list` | `items: [[code, text]]` |
+| `list` | `items: [[code, text]]`, optional `wide` for labels longer than a few characters |
 | `callout` | `title`, `text` |
 | `boxes` | `items: [[label, text]]` |
 | `next` | `label`, `title` |
